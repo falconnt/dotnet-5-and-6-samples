@@ -4,5 +4,12 @@ public static class DateOnlyExtensions
 {
     // check if date is a day in christmas time (Dec, 25th and 26th)
     // the pattern matching shows in the Day, which allows 2 values to be checked at once
-    public static bool IsChristmas(this DateOnly date) => date is { Month: 11, Day: 25 or 26 };
+    public static bool IsChristmas(this DateOnly date) => date is { Month: 12, Day: 25 or 26 };
+
+    public static string ToHumanString(this DateOnly date) => (date) switch
+    {
+        { Month: 7, Day: 4 } => "4th of July",
+        { Month: 9, Day: 11 } => "9/11",
+        _ => date.ToString("MMM d")
+    };
 }
