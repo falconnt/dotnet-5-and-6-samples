@@ -8,8 +8,10 @@ public static class DateOnlyExtensions
 
     public static string ToHumanString(this DateOnly date) => (date) switch
     {
+        { Month: 1, Day: 1 } => "New Year's day",
         { Month: 7, Day: 4 } => "4th of July",
         { Month: 9, Day: 11 } => "9/11",
+        { Month: 12, Day: 25 } or { Month: 12, Day: 26 } => "Christmas time",
         _ => date.ToString("MMM d")
     };
 }
